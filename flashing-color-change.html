@@ -1,0 +1,111 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>More practice</title>
+		<style type="text/css">
+			body {
+				background-color: #232323;
+			}
+
+			#container {
+				margin: 0 auto;
+				max-width: 600px;
+			}
+
+			.rect {
+				width:30%;
+				margin: 1.66%;
+				background-color: black;
+				padding-bottom: 30%;
+				float: left;
+
+			}
+			#btndiv {
+				text-align: center;
+			}
+		</style>
+		<body>
+			<div id="btndiv">
+				<button id="less">less</button>
+				<button id="reset">reset</button>
+				
+			</div>
+			<div id="container">
+				<div class="rect"></div>
+				<div class="rect"></div>
+				<div class="rect"></div>
+				<div class="rect"></div>
+				<div class="rect"></div>
+				<div class="rect"></div>
+				<div class="rect"></div>
+				<div class="rect"></div>
+				<div class="rect"></div>
+				
+				
+			</div>
+			<script type="text/javascript">
+				var reset = document.querySelector("#reset");
+				var less = document.querySelector("#less");
+					var numSq = 9;
+					var colors = genColors(numSq);
+					var squares = document.getElementsByClassName("rect");
+
+				reset.addEventListener("click", function(){
+					numSq = 3;
+					colors = genColors(numSq);
+					for(var i = 0; i < squares.length; i++) {
+						if(i > 2) {
+							squares[i].style.display = "block";
+						}
+					}
+
+				});
+
+
+				less.addEventListener("click", function(){
+					numSq = 3;
+					colors = genColors(numSq);
+					for(var i = 0; i < squares.length; i++) {
+						if(i > 2) {
+							squares[i].style.display = "none";
+						}
+					}
+
+				});
+			
+				setInterval(function(){
+						 numSq = 9
+						 colors = genColors(numSq);
+				for(var i = 0; i < squares.length; i++ ) {
+					if(true) {
+						squares[i].style.backgroundColor = colors[i]
+					}
+					else {
+						squares[i].style.backgroundColor = colors[i]
+					}
+					
+				}
+					
+				},500);
+
+				
+
+
+				function genColors(num) {
+					var arr = [];
+					for(var i = 0; i < num; i++) {
+						arr.push(randCol());
+					}
+					return arr;
+				}
+
+				function randCol(){
+					r = Math.floor(Math.random() * 256);
+					g = Math.floor(Math.random() * 256);
+					b = Math.floor(Math.random() * 256);
+
+					return "rgb(" + r + ", " + g + ", " + b + ")";
+
+				}
+			</script>
+		</body>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>colopickerprac</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bilbo" rel="stylesheet">
+	<style type="text/css">
+		body {
+			background-color: #232323;
+			font-family: 'Open Sans', sans-serif;
+			color: white;		
+			margin: 0;
+		}
+		.square {
+			margin: 1.66%;
+			width: 30%;
+			float: left;
+			padding-bottom: 30%;
+			background-color: blue;
+			border-radius: 15%;
+			transition: background .3s;
+		}
+
+		#container {
+			margin: 20px auto;
+			max-width: 600px;
+		}
+		h1 {
+			color: white;
+			text-align: center;
+		}
+		#stripe {
+			text-align: center;
+			background-color: white;
+			height: 30px;
+
+		}
+		button {
+			border: none;
+			background: none;
+			height: 100%;
+			font-weight:700;
+			font-size: inherit;
+			color: steelblue;
+		}
+		button:hover {
+			background-color: steelblue;
+			color: white;
+		}
+		li {
+			float: left;
+			list-style: none;
+		}
+		li a {
+			display: block;
+			padding: 15px;
+			text-decoration: none;
+			color: white;
+
+
+		}
+		.toggle {
+			box-shadow: 0px 0px 0px 0px #000;
+		}
+		#para {
+			text-align: center;
+			width:80%;
+			color: white;
+			margin: 0 auto;
+			padding-top: 20%;
+			overflow: hidden;
+			font-family: 'Bilbo', cursive;
+			font-siZe: 20px;
+
+		}
+		hr {
+			margin-bottom: 10%;
+			 border: 0;
+   			 height: 1px;
+    		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+   			 background-color: white;
+
+		}
+
+
+	</style>
+
+</head>
+<body>
+	
+
+	<div>
+		<span id="message"></span>
+	</div>
+	<div id="stripe">
+		<button id="reset">Reset</button>
+	
+		
+	</div>
+<div id="container">
+	<h1>pick <span></span></h1>
+
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
+
+
+
+<div id="para">
+<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"</p>
+<div><hr></div>
+
+<img src="Pics/puppy.jpg">
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+	var colors = genColors(9);
+	var squares = document.getElementsByClassName("square")
+	var picked = pickedColor();
+	var pickedDis = document.getElementsByTagName("span")[1];
+	var message = document.getElementById("message");
+	var reset = document.querySelector("#reset");
+
+pickedDis.textContent = picked;
+
+
+
+reset.addEventListener("click", function(){
+	colors = genColors(9);
+	picked = pickedColor();
+	pickedDis.textContent = picked;
+	for(var i = 0; i < squares.length; i++){
+	squares[i].style.backgroundColor = colors[i];
+}
+
+})
+
+for(var i = 0; i < squares.length; i++) {
+	squares[i].style.background = colors[i];
+	squares[i].addEventListener("click", function(){
+		var clicked = this.style.background;
+		if(clicked == picked) {
+			message.textContent = "Correct!" + picked;
+			changeCol(picked);
+		}
+		else {
+			this.style.background = "#232323"
+			message.textContent = clicked;
+		}
+
+	});
+}
+ 	function changeCol(color) {
+ 		for(var i = 0; i < squares.length; i++) {
+ 			squares[i].style.background = color;
+ 		}
+ 	}
+	function pickedColor() {
+		var rng = Math.floor(Math.random() * colors.length);
+		return colors[rng];
+	}
+
+	function genColors(num) {
+		var arr = [];
+		for(var i = 0; i < num; i++) {
+		arr.push(randCol());
+		}
+	return arr
+	}
+
+	function randCol() {
+		var r = Math.floor(Math.random() * 256);
+		var g = Math.floor(Math.random() * 256);
+		var b = Math.floor(Math.random() * 256);
+		return "rgb(" + r + ", " + g + ", " + b +")"
+	}
+
+
+</script>
+</body>
+</html>

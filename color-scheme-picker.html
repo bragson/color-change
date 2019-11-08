@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Website color scheme picker</title>
+	<style type="text/css">
+		body {
+			background-color: #232323;
+			color: white;
+		
+		}
+		h1 {
+			text-align: center;
+		}
+	a {
+		
+		text-decoration: none;
+		color: white;
+	}
+
+	.rect {
+		width: 20%;
+		margin: .5%;
+		padding-bottom: 30%;
+		background-color: black;
+		float: left;
+		
+	/*	box-shadow: 5px 10px 50px 1px black;*/
+
+		
+	}
+	.container {
+		width: 600px;
+		margin:0 auto;
+		padding-top: 175px;
+
+		
+
+	}		
+	</style>
+</head>
+<body>
+	<a href="">change</a>
+	
+	<h1>Color Scheme Picker</h1>
+<div class="container">
+
+	<div class="rect"></div>
+	<div class="rect"></div>
+	<div class="rect"></div>
+	<div class="rect"></div>
+
+</div>
+	
+<script type="text/javascript">
+var rect = document.querySelectorAll(".rect");
+var colors = gencol(4);
+
+for( var i = 0; i < rect.length; i++) {
+	rect[i].style.backgroundColor = colors[i]
+	rect[i].addEventListener("click", function(){
+		console.log(this.style.backgroundColor)
+
+
+	})
+}
+
+
+
+
+function gencol(num) {
+ var arr = [];
+ for(var i = 0; i < num; i++) {
+ 	arr.push(randCol()); 
+ 
+}
+return arr;
+}
+
+function randCol() {
+	var r = Math.floor(Math.random() * 256);
+	var g = Math.floor(Math.random() * 125);
+	var b = Math.floor(Math.random() * 125);
+	return "rgb(" + r + ", " + g + ", " + b + ")"
+}
+
+
+
+
+
+</script>
+</body>
+</html>
